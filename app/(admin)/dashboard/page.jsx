@@ -1,12 +1,11 @@
-"use client"
-import Admininfocard from '@/components/adminpages/Admin-info-card'
-import LargeCards from '@/components/adminpages/LargeCards'
+'use client'
+ import Admininfocard from '@/components/adminpages/Admin-info-card'
+ import LargeCards from '@/components/adminpages/LargeCards'
 import Smallcards from '@/components/adminpages/Smallcards'
-import Chart from "react-apexcharts";
 import React from 'react'
-import Analysischarts from '@/components/adminpages/Analysischarts';
-import Transtation from '@/components/adminpages/Transtation';
-import Outofstock from '@/components/adminpages/Outofstock';
+ import Analysischarts from '@/components/adminpages/Analysischarts';
+ import Transtation from '@/components/adminpages/Transtation';
+ import Outofstock from '@/components/adminpages/Outofstock';
 
 export default function page() {
   return (
@@ -24,18 +23,19 @@ export default function page() {
 
     </div>
     <div className=" grid grid-cols-4 mobile:grid mobile:grid-cols-1 w-full gap-3">
-  <LargeCards  title={"weekly Sales"} sales={"3000"} charttype={"bar"}/>
-  <LargeCards title={"weekly Sales"} sales={"3000"} charttype={"bar"} />
-  <LargeCards title={"weekly Sales"} sales={"3000"}  charttype={"bar"}/>
-  <LargeCards title={"weekly Sales"} sales={"3000"}  charttype={"bar"} />
+  <LargeCards  title={"weekly Sales"} sales={"3000"} />
+  <LargeCards title={"weekly Sales"} sales={"3000"}  />
+  <LargeCards title={"weekly Sales"} sales={"3000"}  />
+  <LargeCards title={"weekly Sales"} sales={"3000"}   />
 </div>
 <div className="analysis-charts mt-3">
 <Analysischarts/>
 </div>
-<div className=" mt-5 mobile:grid mobile:grid-cols-1 w-full grid grid-cols-2 gap-3">
+<div className=" mt-5 mobile:grid mobile:grid-cols-1  grid grid-cols-2 gap-3">
 <Transtation/>
 <Outofstock/>
 </div>
    </div>
+
   )
 }

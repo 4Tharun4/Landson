@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import WelcomeImage from '@/Assets/welcome.svg'
 import Image from 'next/image'
@@ -20,7 +21,7 @@ export default function Admininfocard(){
        </div>
       </div>
       <div className="left-side  mobile:hidden   ">
-<Image src={WelcomeImage} priority alt='Welcome-image' className='absolute  top-4 w-44 h-34    mt-24'/>
+<Image src={WelcomeImage}   priority alt='Welcome-image' className='absolute  top-4 w-44 h-34    mt-24'/>
       </div>
       </div>
     

@@ -2,6 +2,12 @@
 import { ArrowLeft, LayoutDashboard, X, icons } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
+
 
 export default function Slidebar() {
   const links=[
@@ -37,6 +43,13 @@ export default function Slidebar() {
           </div>
           <div className="links flex flex-col  text-white justify-center px-6">
             <div className="main flex  flex-col gap-4">
+            <Collapsible>
+  <CollapsibleTrigger>Orders</CollapsibleTrigger>
+  <CollapsibleContent>
+  Yes. Free to use for personal and commercial projects. No attribution
+    required.
+  </CollapsibleContent>
+</Collapsible>
              {
               links.map((items,i)=>{
                
@@ -51,6 +64,7 @@ export default function Slidebar() {
                 )
               })
              }
+        
               
             </div>
             
