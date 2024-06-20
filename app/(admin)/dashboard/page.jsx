@@ -28,7 +28,7 @@ export default function page() {
   <LargeCards title={"weekly Sales"} sales={"3000"}  />
   <LargeCards title={"weekly Sales"} sales={"3000"}   />
 </div>
-<div className="analysis-charts mt-3">
+<div className="analysis-charts mt-3 min-h-min">
 <Analysischarts/>
 </div>
 <div className=" mt-5 mobile:grid mobile:grid-cols-1  grid grid-cols-2 gap-3">
