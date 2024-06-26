@@ -5,6 +5,9 @@
 
   @layer base {
     :root {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
       --background: 0 0% 100%;
       --foreground: 222.2 84% 4.9%;
 
@@ -68,6 +71,7 @@
   }
 
   @layer base {
+  
     * {
       @apply border-border;
 
@@ -75,4 +79,10 @@
     body {
       @apply bg-background text-foreground;
     }
+    
+      input[type="text"]:focus ~.input-text{
+        @apply bg-red-800
+      }
+    
+    
   }

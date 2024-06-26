@@ -1,9 +1,15 @@
+import Header from '@/components/adminpages/Header'
 import React from 'react'
 
 export default function Orders() {
   return (
-    <div>
-      orders
-    </div>
+   <>
+<Header title="Orders List"  linkpage={"/dashboard/orders/new"} headtitle={"Create Order"} />
+
+
+ 
+
+
+    </>
   )
 }

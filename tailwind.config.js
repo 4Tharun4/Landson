@@ -1,5 +1,6 @@
+import { withUt } from "uploadthing/tw";
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default withUt = {
   darkMode: ["class"],
   content: [
     './pages/**/*.{js,jsx}',
@@ -16,6 +17,7 @@ module.exports = {
     "mobile":{"max":"648px"},
 
   },
+
     container: {
       center: true,
       padding: "2rem",

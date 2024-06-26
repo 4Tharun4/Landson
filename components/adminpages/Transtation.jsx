@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link'
 import React from 'react'
-
+import { CheckCheck } from 'lucide-react';
 export default function Transtation() {
     const products=[
         {
@@ -85,10 +85,10 @@ export default function Transtation() {
                                 {items.OrderID}
                             </th><td className="px-6 py-4">
                                     {items.Product}
+                                </td><td className="px-6 py-4 ">
+                                    <p className='bg-green-200 p-1 items-center inline-flex  rounded-lg justify-center gap-2 '>{items.Payment}  <CheckCheck color='green' /></p>
                                 </td><td className="px-6 py-4">
-                                    {items.Payment}
-                                </td><td className="px-6 py-4">
-                                    ${items.Amount}
+                                    ₹{items.Amount}
                                 </td>
                                 </tr>
                                 </>

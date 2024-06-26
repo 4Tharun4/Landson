@@ -1,16 +1,22 @@
+'use client'
 import Navbar from "@/components/adminpages/Navbar";
 import Slidebar from "@/components/adminpages/Slidebar";
-
+import { useState } from "react";
+import "../globals.css";
 export default function RootLayout({ children }) {
+  const [show,isshow]=useState(false)
+  console.log(show);
     return (
       <>
       <div className=" flex  font-Text">
-        <Slidebar/>
+        <Slidebar show={show} isshow={isshow}/>
         
-         <div className="  w-full  ">
-        <Navbar/>
+         <div className={
+          show?"w-full ":"w-full ml-64"
+         }>
+        <Navbar show={show} isshow={isshow}/>
        
-        <main className=" mt-14  ml-64 flex  px-3 py-4 mobile:ml-0  min-h-screen bg-[#f6f9fc] " >{children}</main>
+        <main className=" mt-14   flex  px-3 py-4 mobile:ml-0  min-h-screen bg-[#f6f9fc] " >{children}</main>
         </div>
         </div>
 

@@ -81,9 +81,9 @@ export default function Outofstock() {
                             <td className="px-6 py-4">
                                     {items.Product}
                                 </td><td className="px-6 py-4">
-                                    {items.Stock}
+                                    <p className=' text-red-400' >{items.Stock}</p>
                                 </td><td className="px-6 py-4">
-                                    ${items.Amount}
+                                    ₹{items.Amount}
                                 </td>
                                 </tr>
                                 </>
