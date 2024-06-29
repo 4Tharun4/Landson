@@ -40,3 +40,13 @@ model DealersData{
   role String @default("DEALER")
 
  }
+ model UsersData{
+      id String @id @default(auto()) @map("_id") @db.ObjectId
+      Name String
+      Email String
+     PhoneNumber String
+     Password String
+     Address String
+     isVerfied String @default("false")
+     role String @default("USER")
+ }
