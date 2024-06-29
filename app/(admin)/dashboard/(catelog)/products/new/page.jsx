@@ -33,7 +33,11 @@ makepostrequest(setloading, "api/productupload", data, "Product ", reset);
       <TextInput  name="ProductEfficiency" register={register} errors={errors} />
       <TextInput  name="ProductRPM" register={register} errors={errors} />
       <TextInput  name="ProductEngineoilcapacity" register={register} errors={errors} />
-      
+      <ImageInput imageUrl={imageUrl}
+          SetImageUrl={SetImageUrl}
+          label="Product Images"
+          endpoint="ProductImageUpload"
+          />
       
 
       <Submit ButtonTitle="Add Product" LoadingButtonTitle="Adding Product"/>

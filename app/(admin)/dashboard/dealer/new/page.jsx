@@ -6,13 +6,17 @@ import Submit from '@/components/adminpages/formsInputs/Submit'
 import { useForm } from 'react-hook-form';
 import ImageInput from '@/components/adminpages/formsInputs/ImageInput'
 import makepostrequest from '@/lib/apiRequest'
+import generateRandomId from '@/components/adminpages/generateuserid'
 export default function NewDealer() {
   const{register, reset,handleSubmit,formState:{errors},watch} = useForm();
 //   const [imageUrl, SetImageUrl] = useState("");
   const [loading, setloading] = useState(false);
   async function submit(data){
+    const DealerId = generateRandomId();
+    data.DealerId= DealerId;
+    console.log(DealerId);
     // data.imageUrl = imageUrl;
-console.log(data);
+// console.log(data);
 makepostrequest(setloading, "api/newdealer", data, "Dealer ", reset);
     // SetImageUrl("");
   }
@@ -29,10 +33,6 @@ makepostrequest(setloading, "api/newdealer", data, "Dealer ", reset);
       <TextInput  name="DealerNumber" register={register} type={"number"} errors={errors} />
       <TextInput  name="DealerEmail" register={register} errors={errors} />
       <TextInput  name="DealerAddress" register={register} errors={errors} />
-     
-      
-      
-
       <Submit ButtonTitle="Add Dealer" LoadingButtonTitle="Adding Dealer"/>
      
 

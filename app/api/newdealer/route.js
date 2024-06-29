@@ -3,17 +3,21 @@ import db from "@/lib/db"; // Assuming this correctly imports your Prisma client
 
 export async function POST(request) {
     try {
-        const { DealerName, DealerNumber, DealerEmail, DealerAddress } = await request.json();
+        const { DealerName, DealerNumber, DealerEmail, DealerAddress,DealerId } = await request.json();
+       console.log(DealerId);
 
+        
         const createdDealer = await db.DealersData.create({
             data: {
                 DealerName,
                 DealerNumber,
                 DealerEmail,
-                DealerAddress
+                DealerAddress,
+                DealerId
+                
             }
         });
-
+console.log(createdDealer);
         return NextResponse.json(createdDealer);
     
     } catch (error) {

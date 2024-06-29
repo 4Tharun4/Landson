@@ -9,7 +9,7 @@ export async function POST(request){
             ProductEngineoilcapacity,
             imageUrl} = await request.json();
 
-        const Product = await db.addProduct.create({
+        const Product = await db.Products.create({
             data:{
                 ProductTitle,ProductDesciption,ProductModel, ProductMaxpower,
                 ProductFueltankcapacity,
