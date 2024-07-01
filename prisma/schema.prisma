@@ -43,7 +43,7 @@ model DealersData{
  model UsersData{
       id String @id @default(auto()) @map("_id") @db.ObjectId
       Name String
-      Email String
+      Email String @unique
      PhoneNumber String
      Password String
      Address String

@@ -2,7 +2,7 @@ import React from 'react';
 
 
  export default function generateRandomId() {
-  const prefix = "L";
+  const prefix = "LS";
   const numberOfDigits = 6;
   
   // Generate a random number with 6 digits

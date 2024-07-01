@@ -5,13 +5,24 @@ import TextArea from '@/components/adminpages/formsInputs/TextArea'
 import Submit from '@/components/adminpages/formsInputs/Submit'
 import { useForm } from 'react-hook-form';
 import ImageInput from '@/components/adminpages/formsInputs/ImageInput'
-import makepostrequest from '@/lib/apiRequest'
+import {makepostrequest} from '@/lib/apiRequest'
 import generateRandomId from '@/components/adminpages/generateuserid'
 export default function NewDealer() {
   const{register, reset,handleSubmit,formState:{errors},watch} = useForm();
 //   const [imageUrl, SetImageUrl] = useState("");
   const [loading, setloading] = useState(false);
   async function submit(data){
+    const baseurl= process.env.NEXT_PUBLIC_BASE_URL;
+    console.log(baseurl);
+    const response = await fetch(`${baseurl}/api/newdealer`,{
+      method:"POST",
+      headers:{
+        "Content-Type": "application/json",
+
+      },
+      body: JSON.stringify(data),
+    });
+    console.log(response);
     const DealerId = generateRandomId();
     data.DealerId= DealerId;
     console.log(DealerId);

@@ -1,6 +1,6 @@
-'use client'
-import React, { useState } from 'react'
+"use client"
 import { BarChart } from '@tremor/react';
+
 const chartdata = [
   {
     name: 'Amphibians',
@@ -34,15 +34,9 @@ const chartdata = [
 
 const dataFormatter = (number) =>
   Intl.NumberFormat('us').format(number).toString();
-export default function Analysischarts() {
-   
-  return (
-    <div className=' w-full h-[400px] px-5 py-5 bg-white shadow-lg rounded-lg'>
-      <div className="main-class  text-xl">
-        <h1>Analysis</h1>
-      </div>
-      <div className="chart-render  ">
-      <BarChart
+
+export const BarChartHero = () => (
+  <BarChart
     data={chartdata}
     index="name"
     categories={['Number of threatened species']}
@@ -51,7 +45,4 @@ export default function Analysischarts() {
     yAxisWidth={48}
     onValueChange={(v) => console.log(v)}
   />
-      </div>
-    </div>
-  )
-}
+);

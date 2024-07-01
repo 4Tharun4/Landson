@@ -33,3 +33,16 @@ export async function POST(request){
       )
     }
 }   
+
+export async function GET(request){
+  try {
+      const Products = await db.Products.findMany();
+      return NextResponse.json(Products)
+  } catch (error) {
+      console.log(error);
+      return NextResponse.json({
+          message:"Failed To Featch Dealers",
+          error
+      },{status:500})
+  }
+}
