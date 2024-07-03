@@ -12,17 +12,17 @@ export default function NewDealer() {
 //   const [imageUrl, SetImageUrl] = useState("");
   const [loading, setloading] = useState(false);
   async function submit(data){
-    const baseurl= process.env.NEXT_PUBLIC_BASE_URL;
-    console.log(baseurl);
-    const response = await fetch(`${baseurl}/api/newdealer`,{
-      method:"POST",
-      headers:{
-        "Content-Type": "application/json",
+    // const baseurl= process.env.NEXT_PUBLIC_BASE_URL;
+    // // console.log(baseurl);
+    // const response = await fetch(`${baseurl}/api/newdealer`,{
+    //   method:"GET",
+    //   headers:{
+    //     "Content-Type": "application/json",
 
-      },
-      body: JSON.stringify(data),
-    });
-    console.log(response);
+    //   },
+    //   body: JSON.stringify(data),
+    // });
+    // console.log(response);
     const DealerId = generateRandomId();
     data.DealerId= DealerId;
     console.log(DealerId);

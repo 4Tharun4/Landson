@@ -1,58 +1,65 @@
 import { NextResponse } from "next/server";
 import db from "@/lib/db"; // Assuming this correctly imports your Prisma client
-import bcrypt from 'bcryptjs'
+import bcrypt from 'bcryptjs';
 
+// POST: Register a new user
 export async function POST(request) {
     try {
-        const { Name, Email, Password, PhoneNumber,Address } = await request.json();
+        const { Name, Email, Password, PhoneNumber, Address } = await request.json();
       
-//check the user exist
-
-const existingUser = await db.UsersData.findUnique({
-    where:{
-        Email
-    }
-})
+        // Check if the user already exists
+        const existingUser = await db.UsersData.findUnique({
+            where: { Email }
+        });
         
-if(existingUser){
-    return NextResponse.json({
-        data:null,
-        Message:"User Already Exists"
-    },{status:409})
-}
-//Encrypt the Hash password
-const hashpassword = await bcrypt.hash(Password,10);
-        const Users = await db.UsersData.create({
+        if (existingUser) {
+            return NextResponse.json({
+                data: null,
+                message: "User Already Exists"
+            }, { status: 409 });
+        }
+
+        // Encrypt the password
+        const hashpassword = await bcrypt.hash(Password, 10);
+
+        // Create the new user in the database
+        const user = await db.UsersData.create({
             data: {
                 Name,
                 Email,
-                Password:hashpassword,
+                Password: hashpassword,
                 PhoneNumber,
                 Address
-                
             }
         });
-console.log(Users);
-        return NextResponse.json(Users);
-    
-    } catch (error) {
-        console.error("Error creating User:", error);
+
+        console.log(user);
+
         return NextResponse.json({
-            message: "Failed to create User",
+            data: user,
+            message: "Successfully Registered"
+        }, { status: 201 });
+
+    } catch (error) {
+        console.error("Error creating user:", error);
+        return NextResponse.json({
+            data: null,
+            message: "Failed to create user",
             error: error.message || "Unknown error"
         }, { status: 500 });
     }
 }
 
-export async function GET(request){
+// GET: Fetch all users
+export async function GET(request) {
     try {
-        const Users = await db.UsersData.findMany();
-        return NextResponse.json(Users)
+        const users = await db.UsersData.findMany();
+        return NextResponse.json(users);
     } catch (error) {
-        console.log(error);
+        console.error("Error fetching users:", error);
         return NextResponse.json({
-            message:"Failed To Featch Users",
-            error
-        },{status:500})
+            message: "Failed to fetch users",
+            error: error.message || "Unknown error"
+        }, { status: 500 });
     }
 }

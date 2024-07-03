@@ -33,7 +33,7 @@ model DealersData{
     id String @id @default(auto()) @map("_id") @db.ObjectId
   DealerName String
   DealerNumber String
-  DealerEmail String @unique
+  DealerEmail String 
   DealerAddress String
   DealerId  String
   PassWord String @default("Landson123")

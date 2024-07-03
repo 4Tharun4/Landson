@@ -7,14 +7,56 @@ import { useForm } from 'react-hook-form';
 import ImageInput from '@/components/adminpages/formsInputs/ImageInput'
 import {makepostrequest} from '@/lib/apiRequest'
 import generateRandomId from '@/components/adminpages/generateuserid'
+import toast from 'react-hot-toast'
+import { useRouter } from 'next/navigation'
+
 export default function NewDealer() {
   const{register, reset,handleSubmit,formState:{errors},watch} = useForm();
 //   const [imageUrl, SetImageUrl] = useState("");
   const [loading, setloading] = useState(false);
-  async function submit(data){
-   
-makepostrequest(setloading, "api/register", data, "register ", reset);
-    // SetImageUrl("");
+  const [emailerror,setemailerror] =useState("");
+ const router = useRouter();
+
+    
+  async function submit(data) {
+    try {
+      setloading(true);
+      const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
+      
+      const response = await fetch(`${baseurl}/api/register`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+        
+      });
+
+      const Responsedata = await response.json();
+
+      if (response.ok) {
+        console.log(Responsedata);
+        setloading(false);
+        toast.success("User Created Successfully");
+        reset();
+        router.push("/login")
+
+      } else {
+        setloading(false);
+        if (response.status === 409) {
+          setemailerror("User Email Already Exists");
+          toast.error("User Email Already Exists");
+        } else {
+          console.error("Server Error:", Responsedata.message);
+          console.log(Responsedata.message);
+          toast.error("Oops, Something went wrong");
+        }
+      }
+    } catch (error) {
+      setloading(false);
+      console.log("Network Error", error);
+      toast.error("Something Went Wrong, Please Try Again");
+    }
   }
   return (
   
@@ -27,6 +69,13 @@ makepostrequest(setloading, "api/register", data, "register ", reset);
         <form onSubmit={handleSubmit(submit)} className="flex justify-center items-center flex-col h-dvh gap-3 "  >
       <TextInput  name="Name" register={register}  errors={errors} />
       <TextInput  name="Email" register={register} type={"email"} errors={errors} />
+      {
+        <span className='text-sm text-red-800 ' >
+          {
+            emailerror?"Email Alerady Exists":""
+          }
+        </span>
+      }
       <TextInput  name="Password" register={register} type={"password"} errors={errors} />
       <TextInput  name="PhoneNumber" register={register} errors={errors} type={"number"} />
       <TextInput  name="Address" register={register}  errors={errors} />
@@ -43,3 +92,4 @@ makepostrequest(setloading, "api/register", data, "register ", reset);
    
   )
 }
+
