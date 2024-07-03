@@ -1,57 +1,114 @@
 'use client'
-import React, { useState } from 'react'
-import { BarChart } from '@tremor/react';
-const chartdata = [
+import React from "react";
+
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+
+const data = [
   {
-    name: 'Amphibians',
-    'Number of threatened species': 2488,
+    name: "JAN",
+    Sales: 4000,
+    Product: 2400,
+    amt: 2400,
   },
   {
-    name: 'Birds',
-    'Number of threatened species': 1445,
+    name: "FEB",
+    Sales: 3000,
+    Product: 1398,
+    amt: 2210,
   },
   {
-    name: 'Crustaceans',
-    'Number of threatened species': 743,
+    name: "MAR",
+    Sales: 2000,
+    Product: 9800,
+    amt: 2290,
   },
   {
-    name: 'Ferns',
-    'Number of threatened species': 281,
+    name: "APR",
+    Sales: 2780,
+    Product: 3908,
+    amt: 2000,
   },
   {
-    name: 'Arachnids',
-    'Number of threatened species': 251,
+    name: "MAY",
+    Sales: 1890,
+    Product: 4800,
+    amt: 2181,
   },
   {
-    name: 'Corals',
-    'Number of threatened species': 232,
+    name: "JUN",
+    Sales: 2390,
+    Product: 3800,
+    amt: 2500,
   },
   {
-    name: 'Algae',
-    'Number of threatened species': 98,
+    name: "JUL",
+    Sales: 3490,
+    Product: 4300,
+    amt: 2100,
+  },
+  {
+    name: "AUG",
+    Sales: 3490,
+    Product: 4300,
+    amt: 2100,
+  },
+  {
+    name: "SEP",
+    Sales: 3490,
+    Product: 4300,
+    amt: 2100,
+  },
+  {
+    name: "OCT",
+    Sales: 3490,
+    Product: 4300,
+    amt: 2100,
+  },
+  {
+    name: "NOV",
+    Sales: 3490,
+    Product: 4300,
+    amt: 2100,
+  },
+  {
+    name: "DEC",
+    Sales: 3490,
+    Product: 4300,
+    amt: 2100,
   },
 ];
 
-const dataFormatter = (number) =>
-  Intl.NumberFormat('us').format(number).toString();
 export default function Analysischarts() {
-   
   return (
-    <div className=' w-full h-[400px] px-5 py-5 bg-white shadow-lg rounded-lg'>
-      <div className="main-class  text-xl">
-        <h1>Analysis</h1>
-      </div>
-      <div className="chart-render  ">
-      <BarChart
-    data={chartdata}
-    index="name"
-    categories={['Number of threatened species']}
-    colors={['blue']}
-    valueFormatter={dataFormatter}
-    yAxisWidth={48}
-    onValueChange={(v) => console.log(v)}
-  />
-      </div>
-    </div>
-  )
+    // <ResponsiveContainer width="100%" height="100%">
+    <BarChart 
+      width={1120}
+      height={350}
+      data={data}
+      margin={{
+        top: 5,
+        right: 30,
+        left: 20,
+        bottom: 5,
+      }}
+    >
+      
+      <XAxis dataKey="name" />
+      <YAxis />
+      <Tooltip shared={true}  />
+      <Legend />
+      <Bar dataKey="Product" fill="#8884d8"  radius={[10,10,0,0]}  barSize={10}/>
+      <Bar dataKey="Sales" fill="#82ca9d" radius={[10,10,0,0]} width={3} barSize={10} />
+    </BarChart>
+    // </ResponsiveContainer>
+  );
 }

@@ -29,13 +29,21 @@ export default function page() {
   <LargeCards title={"weekly Sales"} sales={"3000"}  />
   <LargeCards title={"weekly Sales"} sales={"3000"}   />
 </div>
-<div className="analysis-charts mt-3 min-h-min">
-  
+<div className="analysis-charts mt-3 min-h-min  h-[400px]  overflow-x-auto shadow-lg bg-white">
+ <div className=" p-4">
+<h1>Analysis</h1>
+ </div>
+<div className="">
 <Analysischarts/>
 </div>
-<div className=" mt-5 mobile:grid mobile:grid-cols-1  grid grid-cols-2 gap-3">
+</div>
+<div className=" mt-5 mobile:grid mobile:grid-cols-1 mobile:gap-4   grid grid-cols-2 gap-3">
 <Transtation/>
+<div className="">
 <Outofstock/>
+</div>
+  
+
 </div>
    </div>
 
