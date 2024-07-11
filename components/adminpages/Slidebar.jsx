@@ -11,6 +11,7 @@ import { usePathname } from 'next/navigation'
 import Products from '@/Assets/products.svg'
 import categories from '@/Assets/categories.svg'
 import Image from 'next/image'
+import Analysischarts from './Analysischarts'
 
 
 export default function Slidebar({show,isshow}) {
@@ -46,12 +47,13 @@ export default function Slidebar({show,isshow}) {
       Link:"/dashboard/products"
     },
   ]
-
+console.log(ProductLink);
   return (
     
     <div className={
-      show?" bg-[#2b3445] w-64  text-white  hidden z-50  h-dvh fixed  overflow-y-auto ":" bg-[#2b3445] w-64 mobile:block    text-white  z-50  h-dvh fixed  overflow-y-auto "
+      show?` bg-[#2b3445] w-64  text-white  hidden z-50  h-dvh fixed     mobile:hidden  ${" mobile:block"}   overflow-y-auto `:" bg-[#2b3445] w-64   mobile:block     text-white   mobile:z-0  h-dvh fixed  overflow-y-auto "
     }>
+      <div className=" ">
           <div className="first-logo  flex  justify-between     p-10 text-white">
 <h1 className=' font-medium text-xl'><span className='text-green-500 text-3xl'>L</span>andson</h1>
 <div className="open-not-btn hover:rounded-full flex justify-center items-center w-10 h-10  hover:bg-slate-400  ">
@@ -63,14 +65,14 @@ export default function Slidebar({show,isshow}) {
                <Link href="/dashboard" className={pathname == "/dashboard"?" bg-[#373f50] p-2 rounded-lg text-blue-600    inline-flex gap-3":"inline-flex gap-3"} > <LayoutDashboard/> Dashboard</Link>
                </div>
                <div className="dashboard ">
-              
+               <Link href="/dashboard/products" className={pathname == "/dashboard/products"?" bg-[#373f50] p-2 rounded-lg text-blue-600    inline-flex gap-3":"inline-flex gap-3"} > <LayoutDashboard/> Products</Link>
                </div>
                <Collapsible>
   <CollapsibleTrigger>Products</CollapsibleTrigger>
   <CollapsibleContent>
   {
     ProductLink.map((items,i)=>{
-      <Link href={items.Link} className={pathname == items.Link?" bg-[#373f50] p-2 rounded-lg text-blue-600   inline-flex gap-3":"inline-flex gap-3"} > <LayoutDashboard/> {items.title}</Link>
+      <Link href={items.Link} key={i} className={pathname == items.Link?" bg-[#373f50] p-2 rounded-lg text-blue-600   inline-flex gap-3":"inline-flex gap-3"} > <LayoutDashboard/> {items.title}</Link>
 
     })
   }
@@ -78,9 +80,13 @@ export default function Slidebar({show,isshow}) {
   </CollapsibleContent>
 </Collapsible>
                
+
+              
               
 </div>          
 
     </div>
+    </div>
+    
   )
 }

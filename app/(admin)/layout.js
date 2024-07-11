@@ -4,7 +4,7 @@ import Slidebar from "@/components/adminpages/Slidebar";
 import { useState } from "react";
 import "../globals.css";
 export default function RootLayout({ children }) {
-  const [show,isshow]=useState(false)
+  const [show,isshow]=useState(true)
   console.log(show);
     return (
       <>
@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
          }>
         <Navbar show={show} isshow={isshow}/>
        
-        <main className=" mt-14   flex  px-3 py-4 mobile:ml-0  min-h-screen bg-[#f6f9fc] " >{children}</main>
+        <main className=" mt-14   flex  px-3 py-4 mobile:ml-0  min-h-screen  bg-green-200 " >{children }</main>
         </div>
         </div>
 

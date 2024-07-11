@@ -87,9 +87,10 @@ const data = [
   },
 ];
 
-export default function Analysischarts() {
+export default function Analysischarts({show}) {
   return (
-    // <ResponsiveContainer width="100%" height="100%">
+    <div className="">
+   
     <BarChart 
       width={1120}
       height={350}
@@ -106,9 +107,10 @@ export default function Analysischarts() {
       <YAxis />
       <Tooltip shared={true}  />
       <Legend />
-      <Bar dataKey="Product" fill="#8884d8"  radius={[10,10,0,0]}  barSize={10}/>
-      <Bar dataKey="Sales" fill="#82ca9d" radius={[10,10,0,0]} width={3} barSize={10} />
+      <Bar dataKey="Product" fill="#FFA500"  radius={[10,10,0,0]}  barSize={10}/>
+      <Bar dataKey="Sales" fill="#00FF00" radius={[10,10,0,0]} width={3} barSize={10} />
     </BarChart>
-    // </ResponsiveContainer>
+  
+    </div>
   );
 }
