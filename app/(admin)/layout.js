@@ -3,24 +3,28 @@ import Navbar from "@/components/adminpages/Navbar";
 import Slidebar, { SlidebarItem } from "@/components/adminpages/Slidebar";
 import { useState } from "react";
 import "../globals.css";
-import { BaggageClaim, Box, ClipboardList, LayoutDashboard, Settings } from "lucide-react";
+import { BaggageClaim, BookOpen, Box, ClipboardList, LayoutDashboard, Settings } from "lucide-react";
+import Wherehouse from '@/Assets/warehouse.png'
+import Image from "next/image";
 export default function RootLayout({ children }) {
-  const [show,isshow]=useState(true)
+  const [show,isshow]=useState(false);
   console.log(show);
     return (
       <>
       <div className=" flex  font-Text">
       
         <Slidebar show={show} isshow={isshow}>
-        <SlidebarItem icon={<LayoutDashboard size={30}/>} text="Dashboard" active link="/dashboard"/>
+        <SlidebarItem icon={<LayoutDashboard size={30}/>} text="Dashboard"  link="/dashboard"/>
         <SlidebarItem icon={<BaggageClaim  size={30}/>} text="Products"  link="/dashboard/products"/>
         <SlidebarItem icon={<ClipboardList size={30}/>} text="Orders"  link="/dashboard/orders"/>
         <SlidebarItem icon={<Box size={30}/>} text="Categories"  link="/dashboard/categories"/>
-        <SlidebarItem icon={<Settings size={30}/>} text="Account"  link="/dashboard/products"/>
+        <SlidebarItem icon={<Settings size={30}/>} text="Account"  link="/dashboard/accountsettings"/>
+        <SlidebarItem icon={<Image src={Wherehouse} alt="WhereHouseImage" width={20} height={20}/>} text="WhereHouse"  link="/dashboard/wherehouse"/>
+        <SlidebarItem icon={<BookOpen size={30}/>} text="Blogs"  link="/dashboard/blogs"/>
         </Slidebar>
         
          <div className={
-          show?"w-full ":"w-full  ml-56"
+          show?"w-full ":"w-full  "
          }>
         <Navbar show={show} isshow={isshow}/>
        

@@ -17,11 +17,12 @@ import Analysischarts from './Analysischarts'
 
 const SlidebarContext = createContext()
 export  function SlidebarItem({icon,text,active,alert, link}){
- const{expand} = useContext(SlidebarContext)
+ const{expand} = useContext(SlidebarContext);
+ const pathname = usePathname()
 return(
-  <Link href={link} className={
-    `relative flex items-center py-2 px-3 my-1 rounded-md cursor-pointer  transition-colors${active?" bg-gradient-to-tr  from-indigo-100  to-indigo-200 text-indigo-800":" hover:bg-indigo-50 text-gray-600"}`
-  }>
+  <Link href={link} className={pathname==link?
+    `relative flex items-center py-2 px-3 my-1 rounded-md cursor-pointer  transition-colors bg-gradient-to-tr  from-green-100  to-green-300 text-green-800 ${active}`:
+ `relative flex items-center py-2 px-3 my-1 rounded-md cursor-pointer  transition-colors  from-indigo-100  to-indigo-200 text-green-800` }>
     {icon}
     <span className={` overflow-hidden transition-all ${expand?"w-52 ml-3":"w-0"}`}>{text}</span>
     {active&&<div className={` absolute right-2 w-2 h-2  rounded  bg-indigo-600 ${expand?"":" top-2"}` }></div>}
@@ -30,9 +31,9 @@ return(
 }
 
 
-export default function Slidebar({children}) {
+export default function Slidebar({children,show,isshow}) {
   const [expand,setexpand]= useState(true)
-  // const pathname = usePathname()
+  // 
   
   // const ProductLink = [
   //   {
@@ -66,22 +67,59 @@ export default function Slidebar({children}) {
   // ]
 
   return (
-    <aside className='h-screen  mobile:hidden   '>
+    <><aside className='h-screen  mobile:hidden   '>
       <nav className=' h-full  flex-col border-r   fixed  bg-white z-50 w-56 shadow-sm'>
         <div className="p-6 pb-2 flex justify-between items-center ">
-          <p className={` text-2xl ${expand?"":"hidden"}` } ><span className=' text-3xl text-green-400'>L</span>andson</p>
-          <button  onClick={()=>setexpand(curr=>!curr)}  className=' p-1.5   mx-16    rounded-lg bg-gray-50 hover:bg-gray-100'>
-            { expand?<ChevronFirst/>:<ChevronLast/>}
+          <p className={` text-2xl ${expand ? "" : "hidden"}`}><span className=' text-3xl text-green-400'>L</span>andson</p>
+          <button onClick={() => setexpand(curr => !curr)} className=' p-1.5   mx-16    rounded-lg bg-gray-50 hover:bg-gray-100'>
+            {expand ? <ChevronFirst /> : <ChevronLast />}
           </button>
         </div>
-        <SlidebarContext.Provider value={{expand}}>
+        <SlidebarContext.Provider value={{ expand }}>
 
-      
-        <ul className=' flex-1 px-3'>{children}</ul>
+
+          <ul className=' flex-1 px-3'>{children}</ul>
         </SlidebarContext.Provider>
 
       </nav>
     </aside>
+    <div className="">
+    
+    {
+      show?<aside className='h-screen    '>
+      <nav className=' h-full  flex-col border-r   fixed  bg-white z-50 w-56 shadow-sm'>
+        <div className="p-6 pb-2 flex justify-between items-center ">
+          <p className={` text-2xl ${show ? "" : "hidden"}`}><span className=' text-3xl text-green-400'>L</span>andson</p>
+          <button onClick={() => isshow(show => !show)} className=' p-1.5   mx-16    rounded-lg bg-gray-50 hover:bg-gray-100'>
+            {expand ? <X /> : <X />}
+          </button>
+        </div>
+        <SlidebarContext.Provider value={{ expand }}>
+
+
+          <ul className=' flex-1 px-3'>{children}</ul>
+        </SlidebarContext.Provider>
+
+      </nav>
+    </aside>:<aside className='h-screen  mobile:hidden   '>
+        <nav className=' h-full  flex-col border-r   fixed  bg-white z-50 w-56 shadow-sm'>
+          <div className="p-6 pb-2 flex justify-between items-center ">
+            <p className={` text-2xl ${expand ? "" : "hidden"}`}><span className=' text-3xl text-green-400'>L</span>andson</p>
+            <button onClick={() => isshow(show => !show)} className=' p-1.5   mx-16    rounded-lg bg-gray-50 hover:bg-gray-100'>
+              {show ? <X /> : <X />}
+            </button>
+          </div>
+          <SlidebarContext.Provider value={{ expand }}>
+
+
+            <ul className=' flex-1 px-3'>{children}</ul>
+          </SlidebarContext.Provider>
+
+        </nav>
+      </aside>
+    }
+    </div>
+    </>
 //     <div className={
 //       show?` bg-[#2b3445] w-64  text-white  hidden z-50  h-dvh fixed     mobile:hidden  ${" mobile:block"}   overflow-y-auto `:" bg-[#2b3445] w-64   mobile:block     text-white   mobile:z-0  h-dvh fixed  overflow-y-auto "
 //     }>

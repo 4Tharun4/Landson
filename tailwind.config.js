@@ -15,6 +15,7 @@ export default withUt({
     },
   screens:{
     "mobile":{"max":"648px"},
+    "Desktop":{"min":"800px"}
 
   },
 
