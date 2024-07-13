@@ -1,16 +1,42 @@
+"use client"
 import CustumData from '@/components/adminpages/CustunData';
 import Header from '@/components/adminpages/Header';
-import React from 'react';
 import db from '@/lib/db';
 
-export default async function Dealer() {
-  let users = [];
+import React, { useEffect, useState } from 'react';
 
-  try {
-    users = await db.Users.findMany();
-  } catch (error) {
-    console.error("Error fetching users:", error);
-    // Optionally, you can log this error to an external logging service
+
+export default function Dealer() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch('/api/register/users');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setUsers(data);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
   }
 
   return (
