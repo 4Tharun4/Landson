@@ -10,7 +10,7 @@ export default function Products() {
       <Header title="Product List" linkpage={"/dashboard/products/new"} headtitle={"Add Product"} />
       <hr className=' mt-10 mb-3  text-green-600 h-1 bg-green-400 ' />
    
-        <CustumData  title={"Products"} />
+        {/* <CustumData  title={"Products"} /> */}
         </div>
         </>
     

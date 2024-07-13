@@ -5,7 +5,7 @@ import TextArea from '@/components/adminpages/formsInputs/TextArea'
 import Submit from '@/components/adminpages/formsInputs/Submit'
 import { useForm } from 'react-hook-form';
 import ImageInput from '@/components/adminpages/formsInputs/ImageInput'
-import makepostrequest from '@/lib/apiRequest'
+import {makepostrequest} from '@/lib/apiRequest'
 import Select from '@/components/adminpages/formsInputs/Select'
 export default function NewProduct() {
 
