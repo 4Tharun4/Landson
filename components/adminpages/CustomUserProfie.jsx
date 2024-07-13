@@ -9,6 +9,7 @@ import {
   } from "@/components/ui/dropdown-menu"
   import Image from 'next/image'
 import Logo from '@/Assets/profie.jpg'
+import Link from 'next/link'
 
 export default function CustomUserProfie() {
   return (
@@ -24,11 +25,19 @@ export default function CustomUserProfie() {
        </DropdownMenuLabel>
        <p className='text-[10px] pl-3'>Admin</p>
     <DropdownMenuSeparator  className="bg-green-600  h-[2px]" />
-    <DropdownMenuItem>Profile</DropdownMenuItem>
-    <DropdownMenuItem>Orders</DropdownMenuItem>
-    <DropdownMenuItem>Settings</DropdownMenuItem>
+    <DropdownMenuItem>
+      <Link href="/dashboard/accountsettings">Profile</Link>  
+    </DropdownMenuItem>
+    <DropdownMenuItem>
+      
+      <Link href="/dashboard/orders">Orders</Link>
+    </DropdownMenuItem>
+    <DropdownMenuItem>
+    <Link href="/dashboard/accountsettings">Settings</Link></DropdownMenuItem>
     <DropdownMenuSeparator />
-    <DropdownMenuItem>Logout</DropdownMenuItem>
+    <DropdownMenuItem>
+      
+    </DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>
 

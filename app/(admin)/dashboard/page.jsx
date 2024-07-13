@@ -14,10 +14,10 @@ export default function page() {
     <div className="first-main flex  mobile:flex-col  ">
       {/* Admin-info */}
 <Admininfocard/>
-<div className="grid grid-cols-2 gap-4 w-[50%] mobile:w-full ">
+<div className="grid grid-cols-2 gap-4 w-[50%] mobile:w-full  ">
 <Smallcards title="Today Orders" ordersdata="200" salesdata="4000"/>
 <Smallcards title="Total Orders" ordersdata="200" salesdata="4000"/>
-<Smallcards title="Total Inventry Value" ordersdata="200" salesdata="4000"/>
+<Smallcards title=" Inventry Value" ordersdata="200" salesdata="4000"/>
 <Smallcards title="Tota Sales Value" ordersdata="200" salesdata="4000"/>
 
 </div>

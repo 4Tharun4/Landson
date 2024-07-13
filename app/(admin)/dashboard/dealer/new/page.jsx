@@ -7,11 +7,13 @@ import { useForm } from 'react-hook-form';
 import ImageInput from '@/components/adminpages/formsInputs/ImageInput'
 import {makepostrequest} from '@/lib/apiRequest'
 import generateRandomId from '@/components/adminpages/generateuserid'
+import Select,{SelectRole} from '@/components/adminpages/formsInputs/Select'
 export default function NewDealer() {
   const{register, reset,handleSubmit,formState:{errors},watch} = useForm();
 //   const [imageUrl, SetImageUrl] = useState("");
   const [loading, setloading] = useState(false);
   async function submit(data){
+    console.log(data);
     // const baseurl= process.env.NEXT_PUBLIC_BASE_URL;
     // // console.log(baseurl);
     // const response = await fetch(`${baseurl}/api/newdealer`,{
@@ -23,9 +25,9 @@ export default function NewDealer() {
     //   body: JSON.stringify(data),
     // });
     // console.log(response);
-    const DealerId = generateRandomId();
-    data.DealerId= DealerId;
-    console.log(DealerId);
+    // const DealerId = generateRandomId();
+    // data.DealerId= DealerId;
+    // console.log(DealerId);
     // data.imageUrl = imageUrl;
 // console.log(data);
 makepostrequest(setloading, "api/newdealer", data, "Dealer ", reset);
@@ -40,13 +42,12 @@ makepostrequest(setloading, "api/newdealer", data, "Dealer ", reset);
         </div>
         <div className="form-inputs bg-white h-full w-full py-3 px-3  rounded-lg shadow-lg">
         <form onSubmit={handleSubmit(submit)} className=" px-4 py-3 grid grid-cols-2 gap-3 mobile:grid mobile:grid-cols-1"  >
-      <TextInput  name="DealerName" register={register}  errors={errors} />
-      <TextInput  name="DealerNumber" register={register} type={"number"} errors={errors} />
-      <TextInput  name="DealerEmail" register={register} errors={errors} />
-      <TextInput  name="DealerAddress" register={register} errors={errors} />
+      <TextInput  name="Name" register={register}  errors={errors} />
+      <TextInput  name="PhoneNumber" register={register} type={"number"} errors={errors} />
+      <TextInput  name="Email" register={register} errors={errors} />
+      <TextInput  name="Address" register={register} errors={errors} />
+      <SelectRole name="selectRole" register={register} errors={errors}/>
       <Submit ButtonTitle="Add Dealer" LoadingButtonTitle="Adding Dealer"/>
-     
-
       </form>
         </div>
        
