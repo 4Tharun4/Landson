@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
         <Slidebar show={show} isshow={isshow}>
         <SlidebarItem icon={<LayoutDashboard size={30}/>} text="Dashboard"  link="/dashboard"/>
         <SlidebarItem icon={<BaggageClaim  size={30}/>} text="Products"  link="/dashboard/products"/>
-        <SlidebarItem icon={<User  size={30}/>} text="Customers"  link="/dashboard/dealer"/>
+        <SlidebarItem icon={<User  size={30}/>} text="Customers"  link="/dashboard/customers"/>
         <SlidebarItem icon={<ClipboardList size={30}/>} text="Orders"  link="/dashboard/orders"/>
         <SlidebarItem icon={<Box size={30}/>} text="Categories"  link="/dashboard/categories"/>
         <SlidebarItem icon={<Settings size={30}/>} text="Account"  link="/dashboard/accountsettings"/>

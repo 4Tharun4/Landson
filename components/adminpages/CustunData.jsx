@@ -1,7 +1,8 @@
 "use client";
+import Link from 'next/link';
 import React,{ useState } from 'react'
-import data from '@/app/DummyData/MOCK_DATA.json'
-export default function CustumData({title}) {
+
+export default function CustumData({title,data}) {
     const PAGE_SIZE = 10;
   const [currentpage, setcuttentpage] = useState(1);
   const startindex = (currentpage - 1) * PAGE_SIZE;
@@ -20,7 +21,7 @@ export default function CustumData({title}) {
        
         <thead className="text-xs z-[-10] text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th scope="col" className="p-4">
+            {/* <th scope="col" className="p-4">
               <div className="flex items-center">
                 <input
                   id="checkbox-all-search"
@@ -32,21 +33,24 @@ export default function CustumData({title}) {
                   checkbox
                 </label>
               </div>
-            </th>
-            <th scope="col" className="px-6 py-3">
+            </th> */}
+            {/* <th scope="col" className="px-6 py-3">
               id
-            </th>
+            </th> */}
             <th scope="col" className="px-6 py-3">
-              first_name
-            </th>
-            <th scope="col" className="px-6 py-3">
-              last_name
-            </th>
-            <th scope="col" className="px-6 py-3">
-              gender
+              Name
             </th>
             <th scope="col" className="px-6 py-3">
               Email
+            </th>
+            <th scope="col" className="px-6 py-3">
+              Role
+            </th>
+            <th scope="col" className="px-6 py-3">
+              DealerID
+            </th>
+            <th scope="col" className="px-6 py-3">
+              WhereHouseID
             </th>
             <th scope="col" className="px-6 py-3">
               Action
@@ -62,38 +66,20 @@ export default function CustumData({title}) {
                   key={i}
                   className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                 >
-                  <td className="w-4 p-4">
-                    <div className="flex items-center">
-                      <input
-                        id="checkbox-table-search-1"
-                        type="checkbox"
-                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                      />
-                      <label
-                        htmlFor="checkbox-table-search-1"
-                        className="sr-only"
-                      >
-                        checkbox
-                      </label>
-                    </div>
-                  </td>
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                  >
-                    {items.id}
-                  </th>
-                  <td className="px-6 py-4 ">{items.first_name}</td>
-                  <td className="px-6 py-4">{items.last_name}</td>
-                  <td className="px-6 py-4">{items.gender}</td>
-                  <td className="px-6 py-4">{items.email}</td>
+                  
+                  
+                  <td className="px-6 py-4 ">{items.Name}</td>
+                  <td className="px-6 py-4">{items.Email}</td>
+                  <td className="px-6 py-4">{items.role}</td>
+                  <td className="px-6 py-4">{items.DealerId ||' N/A'}</td>
+                  <td className="px-6 py-4">{items.whereHouseId ||' N/A'}</td>
                   <td className="px-6 py-4">
-                    <a
-                      href="#"
+                    <Link
+                      href={`/dashboard/customers/update/${items.id}`}
                       className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                     >
                       Edit
-                    </a>
+                    </Link>
                   </td>
                 </tr>
               </>

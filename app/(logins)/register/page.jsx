@@ -1,16 +1,14 @@
 "use client"
 import React, { useState } from 'react'
 import TextInput from '@/components/adminpages/formsInputs/TextInput'
-import TextArea from '@/components/adminpages/formsInputs/TextArea'
+
 import Submit from '@/components/adminpages/formsInputs/Submit'
 import { useForm } from 'react-hook-form';
 import ImageInput from '@/components/adminpages/formsInputs/ImageInput'
-import {makepostrequest} from '@/lib/apiRequest'
-import generateRandomId from '@/components/adminpages/generateuserid'
 import toast from 'react-hot-toast'
 import { useRouter } from 'next/navigation'
 
-export default function NewDealer() {
+export default function Register() {
   const{register, reset,handleSubmit,formState:{errors},watch} = useForm();
 //   const [imageUrl, SetImageUrl] = useState("");
   const [loading, setloading] = useState(false);
@@ -23,7 +21,7 @@ export default function NewDealer() {
       setloading(true);
       const baseurl = process.env.NEXT_PUBLIC_BASE_URL;
       
-      const response = await fetch(`${baseurl}/api/register`, {
+      const response = await fetch(`${baseurl}/api/register/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,7 +33,6 @@ export default function NewDealer() {
       const Responsedata = await response.json();
 
       if (response.ok) {
-        console.log(Responsedata);
         setloading(false);
         toast.success("User Created Successfully");
         reset();
@@ -43,7 +40,7 @@ export default function NewDealer() {
 
       } else {
         setloading(false);
-        if (response.status === 409) {
+        if (response.status === 400) {
           setemailerror("User Email Already Exists");
           toast.error("User Email Already Exists");
         } else {

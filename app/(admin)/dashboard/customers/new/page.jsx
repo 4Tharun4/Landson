@@ -8,6 +8,7 @@ import ImageInput from '@/components/adminpages/formsInputs/ImageInput'
 import {makepostrequest} from '@/lib/apiRequest'
 import generateRandomId from '@/components/adminpages/generateuserid'
 import Select,{SelectRole} from '@/components/adminpages/formsInputs/Select'
+import { Loader } from 'lucide'
 export default function NewDealer() {
   const{register, reset,handleSubmit,formState:{errors},watch} = useForm();
 //   const [imageUrl, SetImageUrl] = useState("");
@@ -30,7 +31,7 @@ export default function NewDealer() {
     // console.log(DealerId);
     // data.imageUrl = imageUrl;
 // console.log(data);
-makepostrequest(setloading, "api/newdealer", data, "Dealer ", reset);
+makepostrequest(setloading, "api/register/users", data, "Dealer ", reset);
     // SetImageUrl("");
   }
   return (
@@ -47,7 +48,7 @@ makepostrequest(setloading, "api/newdealer", data, "Dealer ", reset);
       <TextInput  name="Email" register={register} errors={errors} />
       <TextInput  name="Address" register={register} errors={errors} />
       <SelectRole name="selectRole" register={register} errors={errors}/>
-      <Submit ButtonTitle="Add Dealer" LoadingButtonTitle="Adding Dealer"/>
+      <Submit  ButtonTitle="Add Dealer" LoadingButtonTitle="Adding Dealer"/>
       </form>
         </div>
        

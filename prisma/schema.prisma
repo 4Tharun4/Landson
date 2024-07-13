@@ -46,4 +46,5 @@ imageUrl String
   DealerId String?
   WhereHouseId String?  
   AdminId String? 
+  verficationtoken String?
  }
