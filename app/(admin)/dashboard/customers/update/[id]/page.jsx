@@ -15,6 +15,7 @@ const Update = async ({ params }) => {
       <p>{singleUser?.Name}</p> {/* Use optional chaining in case user is not found */}
       <p>{singleUser?.PhoneNumber}</p> 
       <p>{singleUser?.role}</p> 
+      <p>{singleUser?.UserId || 'N/A' }</p>
     </div>
   );
 };

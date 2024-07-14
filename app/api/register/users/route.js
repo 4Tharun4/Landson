@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import db from "@/lib/db"; // Assuming this correctly imports your Prisma client
 import bcrypt from 'bcryptjs';
-import generateRandomId from "@/components/adminpages/generateuserid";
-import { WHEREHOUSE,ADMIN } from "@/components/adminpages/generateuserid";
+import { WHEREHOUSE,ADMIN,USER,DEALER } from "@/components/adminpages/generateuserid";
 import { v4 as uuidv4 } from 'uuid';
 import base64url from "base64url";
 
@@ -25,7 +24,7 @@ export async function POST(request) {
         }
 
         const rawtoken =  uuidv4()
-        console.log(rawtoken);
+      
         const token = base64url.encode(rawtoken)
         const userdata = {
             Name,
@@ -39,21 +38,24 @@ export async function POST(request) {
         };
 
         if (selectRole === 'DEALER') {
-            userdata.DealerId = generateRandomId();
+            userdata.UserId = DEALER();
            
         } else if (selectRole === 'WHEREHOUSE') {
-            userdata.WhereHouseId = WHEREHOUSE();
+            userdata.UserId = WHEREHOUSE();
            
         }else if(selectRole === 'ADMIN'){
- userdata.AdminId = ADMIN();
+ userdata.UserId = ADMIN();
 
-        }
+        }else if(selectRole === 'USER'){
+            userdata.UserId = USER();
+           
+                   }
 
         const user = await db.Users.create({
             data: userdata
         });
 
-        console.log(user);
+       
         return NextResponse.json(user);
     
     } catch (error) {

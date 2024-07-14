@@ -43,8 +43,6 @@ imageUrl String
   role String[]
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
-  DealerId String?
-  WhereHouseId String?  
-  AdminId String? 
+  UserId String? 
   verficationtoken String?
  }

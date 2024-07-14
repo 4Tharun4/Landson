@@ -1,6 +1,7 @@
 "use client"
 import CustumData from '@/components/adminpages/CustunData';
 import Header from '@/components/adminpages/Header';
+import { Skeleton } from '@/components/ui/skeleton';
 import db from '@/lib/db';
 
 import React, { useEffect, useState } from 'react';
@@ -32,7 +33,10 @@ export default function Dealer() {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>
+      <Skeleton/>
+      <p>LOading</p>
+    </div>;
   }
 
   if (error) {
@@ -48,6 +52,7 @@ export default function Dealer() {
         <div className="table">
           <CustumData data={users} title="Users List"/>
         </div>
+        <Skeleton/>
       </div>
     </>
   );

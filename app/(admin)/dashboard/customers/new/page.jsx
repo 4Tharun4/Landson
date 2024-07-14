@@ -14,7 +14,7 @@ export default function NewDealer() {
 //   const [imageUrl, SetImageUrl] = useState("");
   const [loading, setloading] = useState(false);
   async function submit(data){
-    console.log(data);
+    
     // const baseurl= process.env.NEXT_PUBLIC_BASE_URL;
     // // console.log(baseurl);
     // const response = await fetch(`${baseurl}/api/newdealer`,{
