@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link'
 import React from 'react'
-import { CheckCheck } from 'lucide-react';
+import { Check, CheckCheck, CircleX, Clock } from 'lucide-react';
 
 export default function Transtation() {
     const products = [
@@ -23,14 +23,14 @@ export default function Transtation() {
             OrderID: 3,
             Product: "Tiller",
             Amount: 30000,
-            Payment: "Success",
+            Payment: "Pending",
             UserType:"User"
         },
         {
             OrderID: 4,
             Product: "Tiller",
             Amount: 30000,
-            Payment: "Success",
+            Payment: "Failure",
             UserType:"Dealer"
         },
         {
@@ -41,6 +41,26 @@ export default function Transtation() {
             UserType:"User"
         },
     ];
+
+    const getPaymentIcon = (Payment) => {
+        switch (Payment) {
+          case 'Success':
+            return < Check color='white'/>;
+          case 'Failure':
+            return <CircleX color='white' />;
+          case 'Pending':
+            return <Clock  color='white'/>;
+          
+          default:
+            return null;
+        }
+      };
+    const roleColors = {
+        Success: 'bg-green-400 text-red-800',
+        Failure: 'bg-red-400 text-green-800',
+        Pending: 'bg-yellow-500 text-blue-800',
+  
+      };
 
     return (
         <div className='w-full bg-white shadow-lg rounded-lg'>
@@ -77,7 +97,13 @@ export default function Transtation() {
                         </thead>
                         <tbody>
                             {
-                                products.map((items, i) => (
+                                
+                                products.map((items, i) =>{
+
+                               
+                                    const roleClass = roleColors[items.Payment] ;
+                               return (
+                                    
                                     <tr className="bg-white dark:bg-gray-800" key={i}>
                                         <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                             {items.OrderID}
@@ -89,16 +115,18 @@ export default function Transtation() {
                                             {items.UserType}
                                         </td>
                                         <td className="px-6 py-4">
-                                            <p className='bg-green-200 p-1 items-center inline-flex rounded-lg justify-center gap-2'>
+                                            <p className={`${roleClass} p-1 items-center inline-flex rounded-lg justify-center gap-2`}>
+    
                                                 {items.Payment}
-                                                <CheckCheck color='green' />
+                                                {getPaymentIcon(items.Payment)}
+                                                
                                             </p>
                                         </td>
                                         <td className="px-6 py-4">
                                             ₹{items.Amount}
                                         </td>
                                     </tr>
-                                ))
+                                )})
                             }
                         </tbody>
                     </table>
