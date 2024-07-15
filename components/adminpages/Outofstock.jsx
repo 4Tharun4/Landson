@@ -44,8 +44,8 @@ export default function Outofstock() {
                 </div>
 
                 <div className="relative overflow-x-auto">
-                    <table className="w-full text-sm text-center bg-gray-300 rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead className="text-xs text-gray-900 uppercase dark:text-gray-400">
+                    <table className="w-full text-sm text-center bg-gray-300 rtl:text-right text-gray-500 ">
+                        <thead className="text-xs text-gray-900 uppercase ">
                             <tr>
                                 <th scope="col" className="px-6 py-3">
                                     Product
@@ -61,7 +61,7 @@ export default function Outofstock() {
                         <tbody>
                             {
                                 products.map((items, i) => (
-                                    <tr className="bg-white dark:bg-gray-800" key={i}>
+                                    <tr className="bg-white " key={i}>
                                         <td className="px-6 py-4">
                                             {items.Product}
                                         </td>

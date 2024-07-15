@@ -1,13 +1,13 @@
 import { withUt } from "uploadthing/tw";
 /** @type {import('tailwindcss').Config} */
 export default withUt({
-  darkMode: ["class"],
+  
   content: [
     './pages/**/*.{js,jsx}',
     './components/**/*.{js,jsx}',
     './app/**/*.{js,jsx}',
     './src/**/*.{js,jsx}',
-    "./node_modules/flowbite/**/*.js"
+   
   ],
   prefix: "",
   theme: {

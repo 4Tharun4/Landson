@@ -75,8 +75,8 @@ export default function Transtation() {
                 </div>
 
                 <div className="relative overflow-x-auto ">
-                    <table className="w-full text-sm text-center bg-gray-300 rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead className="text-xs text-gray-900 uppercase  dark:text-gray-400">
+                    <table className="w-full text-sm text-center bg-gray-300 rtl:text-right text-gray-500 ">
+                        <thead className="text-xs text-gray-900 uppercase  ">
                             <tr>
                                 <th scope="col" className="px-6 py-3">
                                     Order ID
@@ -104,8 +104,8 @@ export default function Transtation() {
                                     const roleClass = roleColors[items.Payment] ;
                                return (
                                     
-                                    <tr className="bg-white dark:bg-gray-800" key={i}>
-                                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <tr className="bg-white" key={i}>
+                                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                                             {items.OrderID}
                                         </th>
                                         <td className="px-6 py-4">
