@@ -33,7 +33,7 @@ export default function CustumData({title,data}) {
     ADMIN: 'bg-[#8B0000] text-[#FFFFFF] rounded-lg px-2 py-1',
     USER: ' text-[#00008B] bg-[#ADD8E6] rounded-lg px-2 py-1',
     DEALER: 'text-[#006400] bg-[#90EE90] rounded-lg px-2 py-1',
-    WHEREHOUSE: 'text-[#FF8C00] bg-[#FFFFE0] rounded-lg px-2 py-1',
+    WHEREHOUSE: 'text-[#FFF] bg-blue-400 rounded-lg px-2 py-1',//text-white bg-orange
   };
   
   const handledelete=()=>{

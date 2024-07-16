@@ -21,15 +21,16 @@ datasource db {
  }
 model Products{
 id String @id @default(auto()) @map("_id") @db.ObjectId
-ProductDesciption String
-ProductEfficiency  String 
-ProductEngineoilcapacity String
-ProductFueltankcapacity String
-ProductMaxpower String
+Category String
+ProductName String
+ProductPriceUser  String 
+ProductPriceDealer String
+ProductDescription String?
+ProductStock String
 ProductModel String
-ProductRPM String
-ProductTitle String
 imageUrl String
+ProductType String?
+Productslug String?
 }
 
  model Users{

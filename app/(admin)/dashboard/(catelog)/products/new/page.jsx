@@ -6,7 +6,8 @@ import Submit from '@/components/adminpages/formsInputs/Submit'
 import { useForm } from 'react-hook-form';
 import ImageInput from '@/components/adminpages/formsInputs/ImageInput'
 import {makepostrequest} from '@/lib/apiRequest'
-import Select from '@/components/adminpages/formsInputs/Select'
+import Select, { ProductType } from '@/components/adminpages/formsInputs/Select'
+import { generateslug } from '@/components/adminpages/generateuserid'
 export default function NewProduct() {
 
   const cateregory =  [
@@ -29,9 +30,13 @@ export default function NewProduct() {
   async function submit(data){
     data.imageUrl = imageUrl;
 console.log(data);
+const Productslug = generateslug(data.ProductName);
+data.Productslug = Productslug;
+console.log(imageUrl);
 makepostrequest(setloading, "api/productupload", data, "Product ", reset);
     SetImageUrl("");
   }
+
   return (
   
       <>
@@ -41,22 +46,21 @@ makepostrequest(setloading, "api/productupload", data, "Product ", reset);
         </div>
         <div className="form-inputs bg-white h-full w-full py-3 px-3  rounded-lg shadow-lg">
         <form onSubmit={handleSubmit(submit)} className=" px-4  w- full py-3 grid grid-cols-2 gap-3 mobile:grid mobile:grid-cols-1"  >
-      <TextInput  name="ProductTitle" register={register} errors={errors} />
-      <TextInput  name="ProductDesciption" register={register} errors={errors} />
+      <TextInput  name="ProductName" register={register} errors={errors} />
+      <TextInput  name="ProductPriceUser" register={register} errors={errors} />
+      <TextInput  name="ProductPriceDealer" register={register} errors={errors} />
+      <TextInput  name="ProductStock" type={'number'} register={register} errors={errors} />
       <TextInput  name="ProductModel" register={register} errors={errors} />
-      <TextInput  name="ProductMaxpower" register={register} errors={errors} />
-      <TextInput  name="ProductFueltankcapacity" register={register} errors={errors} />
-      <TextInput  name="ProductEfficiency" register={register} errors={errors} />
-      <TextInput  name="ProductRPM" register={register} errors={errors} />
-      <TextInput  name="ProductEngineoilcapacity" register={register} errors={errors} />
+    <ProductType name="ProductType" register={register} errors={errors}/>
+    <Select name="Category" register={register} errors={errors} objects={cateregory}/>
+
       <ImageInput imageUrl={imageUrl}
           SetImageUrl={SetImageUrl}
           label="Product Images"
           endpoint="ProductImageUpload"
           />
-      <Select name="Category" register={register} errors={errors} objects={cateregory}/>
-
-      <Submit ButtonTitle="Add Product" LoadingButtonTitle="Adding Product"/>
+          <TextArea name="ProductDescription" register={register} errors={errors}/>
+      <Submit ButtonTitle="Add Product" LoadingButtonTitle="Adding Product" />
      
 
       </form>

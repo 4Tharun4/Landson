@@ -2,21 +2,21 @@ import { NextResponse } from "next/server";
 import db from "@/lib/db";
 export async function POST(request){
     try {
-        const {ProductTitle,ProductDesciption,ProductModel, ProductMaxpower,
-            ProductFueltankcapacity,
-            ProductEfficiency,
-            ProductRPM,
-            ProductEngineoilcapacity,
+        const {Category,ProductModel,ProductName, ProductPriceDealer,
+            ProductPriceUser,
+            ProductStock,
+            ProductType,
+            Productslug,
             imageUrl} = await request.json();
 
         const Product = await db.Products.create({
             data:{
-                ProductTitle,ProductDesciption,ProductModel, ProductMaxpower,
-                ProductFueltankcapacity,
-                ProductEfficiency,
-                ProductRPM,
-                ProductEngineoilcapacity,
-                imageUrl
+                Category,ProductModel,ProductName, ProductPriceDealer,
+            ProductPriceUser,
+            ProductStock,
+            ProductType,
+            Productslug,
+            imageUrl
             }
           })
         

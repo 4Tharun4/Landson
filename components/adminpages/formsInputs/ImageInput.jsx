@@ -4,11 +4,12 @@ import {UploadButton,UploadDropzone}  from  '@/lib/uploadthing'
 import { Pencil } from "lucide-react";
 import Image from "next/image";
 
+
 import React from "react";
 import toast, { Toaster } from "react-hot-toast";
  
 export default function ImageInput({
-    label,imageUrl="",SetImageUrl,className="col-span-full ",
+    label,imageUrl,SetImageUrl,className="col-span-full ",
     endpoint="ProductImageUpload",
 }) 
 
@@ -39,7 +40,7 @@ export default function ImageInput({
             alt="Product-Image"
             width={1000}
             height={667}
-            className="w-full h-64  object-contain "
+            className="w-full h-64  object-contain"
             />
 
         ):(
@@ -51,6 +52,7 @@ export default function ImageInput({
         
             }}
             onUploadError={(error) => {
+                console.log(error);
               // Do something with the error.
               toast.error(`ERROR! ${error.message}`,error)
 

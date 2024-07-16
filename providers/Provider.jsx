@@ -4,7 +4,7 @@ import React from 'react'
 import { ThemeProvider } from 'next-themes'
 import { Toaster } from 'react-hot-toast'
 import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
-import { ourFileRouter } from '@/app/api/uploadingthing/core';    
+import { ourFileRouter } from '@/app/api//uploadthing/core';    
 import { extractRouterConfig } from "uploadthing/server";
 export default function Providers({children}) {
   return (

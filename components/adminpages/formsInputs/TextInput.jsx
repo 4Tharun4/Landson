@@ -5,7 +5,7 @@ export default function TextInput({
 }) {
   return (
     
-    <label  className=' relative   '>
+    <label   className=' relative'>
   <input  {...register(`${name}`,{require})}  autoComplete='off'  type={type}  required={true} className='px-4 py-2   w-full text-lg  outline-none  border-2  border-gray-200  rounded  hover:border-blue-600  duration-200  peer focus:border-indigo-600 bg-inherit   ' />
  
 
