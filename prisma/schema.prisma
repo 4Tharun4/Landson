@@ -16,8 +16,6 @@ datasource db {
 
 model Products{
 id String @id @default(auto()) @map("_id") @db.ObjectId
-// Category  Category @relation(fields: [categoryId], references: [id])
-// categoryId String @db.ObjectId
 ProductName String
 ProductPriceUser  String 
 ProductPriceDealer String
@@ -27,8 +25,7 @@ ProductModel String
 imageUrl String
 ProductType String?
 Productslug String?
- createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+
 }
 
  model Users{
@@ -53,7 +50,6 @@ model Category {
   Name String
   imageUrl String
   Description String
-// products Products[]
  createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
