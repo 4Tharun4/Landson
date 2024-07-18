@@ -1,4 +1,5 @@
 import db from '@/lib/db'
+import Image from 'next/image';
 import React from 'react'
 
 const Update = async ({ params }) => {
@@ -16,6 +17,7 @@ const Update = async ({ params }) => {
       <p>{singleUser?.PhoneNumber}</p> 
       <p>{singleUser?.role}</p> 
       <p>{singleUser?.UserId || 'N/A' }</p>
+      <Image src={singleUser?.imageUrl} alt='User Image' width={1000} height={1000}/>
     </div>
   );
 };

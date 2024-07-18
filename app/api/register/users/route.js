@@ -7,9 +7,9 @@ import base64url from "base64url";
 
 export async function POST(request) {
     try {
-        const { Name, Email, Address, PhoneNumber, selectRole,Password } = await request.json();
-        const passwordtohash = Password || "Landson@123";
-        
+        const { Name, Email, Address, PhoneNumber, selectRole,Password,imageUrl } = await request.json();
+        console.log(imageUrl);
+        const passwordtohash = Password || "Landson@123";        
          const password = await bcrypt.hash(passwordtohash, 10);
 
         // Check if a user with the same email already exists
@@ -33,7 +33,8 @@ export async function POST(request) {
             role: [selectRole || 'USER'], // Ensure role is a single string
             Address,
             PhoneNumber,
-            verficationtoken:token
+            verficationtoken:token,
+            imageUrl
            
         };
 

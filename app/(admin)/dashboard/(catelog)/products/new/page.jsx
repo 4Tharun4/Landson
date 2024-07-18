@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TextInput from '@/components/adminpages/formsInputs/TextInput'
 import TextArea from '@/components/adminpages/formsInputs/TextArea'
 import Submit from '@/components/adminpages/formsInputs/Submit'
@@ -10,33 +10,62 @@ import Select, { ProductType } from '@/components/adminpages/formsInputs/Select'
 import { generateslug } from '@/components/adminpages/generateuserid'
 export default function NewProduct() {
 
-  const cateregory =  [
+
+  const data =  [
     {
       id:"1",
-      name:"Battery"
+      Name:"Spares"
     },
     {
       id:"2",
-      name:"Battery"
+      Name:"Battery"
     },
     {
       id:"3",
-      name:"Battery"
+      Name:"Battery"
     },
   ]
   const{register, reset,handleSubmit,formState:{errors},watch} = useForm();
+  const[categories,Setcategory] = useState([]);
   const [imageUrl, SetImageUrl] = useState("");
   const [loading, setloading] = useState(false);
+
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch('/api/category');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        Setcategory(data);
+      } catch (error) {
+        console.error("Error fetching users:", error);
+        setError(error);
+      } finally {
+        setloading(false);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
+
+
+
+
   async function submit(data){
     data.imageUrl = imageUrl;
-console.log(data);
 const Productslug = generateslug(data.ProductName);
 data.Productslug = Productslug;
 console.log(imageUrl);
 makepostrequest(setloading, "api/productupload", data, "Product ", reset);
     SetImageUrl("");
-  }
 
+
+
+  }
   return (
   
       <>
@@ -52,7 +81,7 @@ makepostrequest(setloading, "api/productupload", data, "Product ", reset);
       <TextInput  name="ProductStock" type={'number'} register={register} errors={errors} />
       <TextInput  name="ProductModel" register={register} errors={errors} />
     <ProductType name="ProductType" register={register} errors={errors}/>
-    <Select name="Category" register={register} errors={errors} objects={cateregory}/>
+    <Select name="Category" register={register} errors={errors} data={categories} />
 
       <ImageInput imageUrl={imageUrl}
           SetImageUrl={SetImageUrl}

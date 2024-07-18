@@ -39,6 +39,8 @@ export default function CustumData({title,data}) {
   const handledelete=()=>{
     alert("Delete Scussfully")
   }
+  console.log(data.imageUrl);
+
 
   return (
     <div className=''>
@@ -66,6 +68,9 @@ export default function CustumData({title,data}) {
               id
             </th> */}
             <th scope="col" className="px-6 py-3">
+              Image
+            </th>
+            <th scope="col" className="px-6 py-3">
               Name
             </th>
             <th scope="col" className="px-6 py-3">
@@ -84,7 +89,7 @@ export default function CustumData({title,data}) {
           </tr>
         </thead>
 
-        <tbody>
+        <tbody >
           {
             datasize === 0?(
               <tr>
@@ -102,7 +107,12 @@ export default function CustumData({title,data}) {
                     className={` bg-white border-b  hover:bg-gray-50 `}
                   >
                     
-                    
+                    <td className="px-6 py-4 flex justify-center items-center ">
+                      <div className=" w-10 h-10 rounded-full bg-black">
+                      <Image src={items.imageUrl} alt='Users-Image' width={100} height={100} className=' rounded-full' />
+                      </div>
+                      </td>
+                      
                     <td className="px-6 py-4 ">{items.Name}</td>
                     <td className="px-6 py-4">{items.Email}</td>
                     <td className="">

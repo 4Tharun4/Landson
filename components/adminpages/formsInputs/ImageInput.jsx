@@ -10,7 +10,7 @@ import toast, { Toaster } from "react-hot-toast";
  
 export default function ImageInput({
     label,imageUrl,SetImageUrl,className="col-span-full ",
-    endpoint="ProductImageUpload",
+    endpoint
 }) 
 
 {

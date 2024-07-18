@@ -7,6 +7,7 @@ export async function POST(request){
             ProductStock,
             ProductType,
             Productslug,
+            ProductDescription,
             imageUrl} = await request.json();
 
         const Product = await db.Products.create({
@@ -16,7 +17,8 @@ export async function POST(request){
             ProductStock,
             ProductType,
             Productslug,
-            imageUrl
+            imageUrl,
+            ProductDescription
             }
           })
         

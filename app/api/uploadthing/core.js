@@ -22,7 +22,7 @@ export const ourFileRouter = {
       return { uploadedBy :"Tharun G V"}
     }),
     // Define as many FileRoutes as you like, each with a unique routeSlug
-    DealerImageUpload: f({ image: { maxFileSize: "5MB" } })
+    UserImageUpload: f({ image: { maxFileSize: "5MB" } })
       // Set permissions and file types for this FileRoute
 
       .onUploadComplete(async ({ metadata, file }) => {

@@ -18,7 +18,7 @@ export default function Login() {
     
   async function submit(data) {
     
-    
+    console.log(data);
   }
   return (
   

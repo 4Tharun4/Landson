@@ -1,31 +1,18 @@
 import React from 'react'
 
 export default function Select({
-   name,type,register,errors,}) 
+   name,type,register,errors,data}) 
 {
-    const optios =[
-        {
-            id:"1",
-            "categoteryname":"Battery"
-        },
-        {
-            id:"2",
-            "categoteryname":"Spares"
-        },
-        {
-            id:"3",
-            "categoteryname":"Stikers"
-        },
-    ]
+    
   return (
     
     <label  className=' relative   '>
   <select  {...register(`${name}`,{require})}  autoComplete='off'  type={type}  required={true} className='px-4 py-2   w-full text-lg  outline-none  border-2  border-gray-200  rounded  hover:border-blue-600  duration-200  peer focus:border-indigo-600 bg-inherit ' >
   {
-    optios.map((opt,i)=>{
+    data.map((opt,i)=>{
         return(
             <option key={i} > 
-       {opt.categoteryname}
+       {opt.Name}
             </option>
         )
     })

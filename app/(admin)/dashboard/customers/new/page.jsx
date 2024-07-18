@@ -11,7 +11,7 @@ import Select,{SelectRole} from '@/components/adminpages/formsInputs/Select'
 import { Loader } from 'lucide'
 export default function NewDealer() {
   const{register, reset,handleSubmit,formState:{errors},watch} = useForm();
-//   const [imageUrl, SetImageUrl] = useState("");
+  const [imageUrl, SetImageUrl] = useState("");
   const [loading, setloading] = useState(false);
   async function submit(data){
     
@@ -29,10 +29,10 @@ export default function NewDealer() {
     // const DealerId = generateRandomId();
     // data.DealerId= DealerId;
     // console.log(DealerId);
-    // data.imageUrl = imageUrl;
+  data.imageUrl = imageUrl;
 // console.log(data);
-makepostrequest(setloading, "api/register/users", data, "Dealer ", reset);
-    // SetImageUrl("");
+makepostrequest(setloading, "api/register/users", data, "Customer ", reset);
+    SetImageUrl("");
   }
   return (
   
@@ -48,7 +48,12 @@ makepostrequest(setloading, "api/register/users", data, "Dealer ", reset);
       <TextInput  name="Email" register={register} errors={errors} />
       <TextInput  name="Address" register={register} errors={errors} />
       <SelectRole name="selectRole" register={register} errors={errors}/>
-      <Submit  ButtonTitle="Add Dealer" LoadingButtonTitle="Adding Dealer"/>
+      <ImageInput imageUrl={imageUrl}
+          SetImageUrl={SetImageUrl}
+          label="UserImageImage"
+          endpoint="UserImageUpload"
+          />
+      <Submit  ButtonTitle="Add Customer" LoadingButtonTitle="Adding Customer"/>
       </form>
         </div>
        
