@@ -43,7 +43,7 @@ export async function GET(request){
   } catch (error) {
       console.log(error);
       return NextResponse.json({
-          message:"Failed To Featch Dealers",
+          message:"Failed To Featch Users",
           error
       },{status:500})
   }

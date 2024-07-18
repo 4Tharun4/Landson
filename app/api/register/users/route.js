@@ -8,7 +8,6 @@ import base64url from "base64url";
 export async function POST(request) {
     try {
         const { Name, Email, Address, PhoneNumber, selectRole,Password,imageUrl } = await request.json();
-        console.log(imageUrl);
         const passwordtohash = Password || "Landson@123";        
          const password = await bcrypt.hash(passwordtohash, 10);
 
