@@ -50,7 +50,5 @@ model Category {
   Name String
   imageUrl String
   Description String
- createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
 }
 //1 to 1 user Realationship =>Profile reationship
